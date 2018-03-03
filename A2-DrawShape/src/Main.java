@@ -21,7 +21,7 @@ public class Main {
 				switch (optionSelected) {
 					case "R":
 						try {
-							int[] measurements = GetMeasurements();
+							int[] measurements = Shape.GetMeasurements();
 							Rectangle myRect = new Rectangle(measurements[0], measurements[1]);
 							myRect.draw();
 						} catch (ShapeException e) {
@@ -30,6 +30,13 @@ public class Main {
 						break;
 						
 					case "T":
+						try {
+							int[] measurements = Triangle.GetMeasurements();
+							Triangle myTri = new Triangle(measurements[0], measurements[1], measurements[2]);
+							//myTri.draw();
+						} catch (ShapeException e) {
+							System.out.println(e);
+						}
 						break;
 						
 					case "Q":
@@ -38,20 +45,6 @@ public class Main {
 				}
 			}
 		}
-	}
-	
-	public static int[] GetMeasurements() {
-		int[] measurements = new int[2];
-		
-		System.out.print("Width: ");
-		int width = scan.nextInt();
-		System.out.print("Height: ");
-		int height = scan.nextInt();
-		
-		measurements[0] = width;
-		measurements[1] = height;
-		
-		return measurements;
 	}
 	
 	public static String DisplayOptions() {

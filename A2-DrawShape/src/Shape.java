@@ -26,4 +26,18 @@ public class Shape {
 			throw new ShapeException("The height must be between " + minHeightCm + " and " + maxHeightCm + ". You entered the value " + height);
 		}
 	}
+	
+	public static int[] GetMeasurements() {
+		int[] measurements = new int[2];
+		
+		System.out.print("Width: ");
+		int width = Main.scan.nextInt();
+		System.out.print("Height: ");
+		int height = Main.scan.nextInt();
+		
+		measurements[0] = width;
+		measurements[1] = height;
+		
+		return measurements;
+	}
 }
