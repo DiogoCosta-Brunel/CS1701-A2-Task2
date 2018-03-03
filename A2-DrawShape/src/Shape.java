@@ -11,7 +11,7 @@ public class Shape {
 	double timeToDraw;
 	static final int drawSpeed = 40;
 	
-	static final double multipler = 0.42; // Used to determine how long to draw.
+	static final double multipler = 0.2; // Used to determine how long to draw.
 	
 	Shape(int widthCm, int heightCm) throws ShapeException {
 		if (widthCm >= minWidthCm && widthCm <= maxWidthCm) {
