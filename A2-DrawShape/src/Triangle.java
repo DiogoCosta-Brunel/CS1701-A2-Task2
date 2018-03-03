@@ -3,15 +3,31 @@ public class Triangle {
 	
 	double angleA, angleB, angleC;
 	int sideA, sideB, sideC;
+	static final int minCm = 30, maxCm = 90;
 
 	public Triangle(int sideA, int sideB, int sideC) throws ShapeException {
-		// TODO Auto-generated constructor stub
-		this.sideA = sideA;
-		this.sideB = sideB;
-		this.sideC = sideC;
+		if (sideA >= minCm && sideA <= maxCm) {
+			this.sideA = sideA;
+		} else {
+			throw new ShapeException("Side A must be between " + minCm + " and " + maxCm + ". You entered the value " + sideA);
+		}
+		
+		if (sideB >= minCm && sideB <= maxCm) {
+			this.sideB = sideB;
+		} else {
+			throw new ShapeException("Side B must be between " + minCm + " and " + maxCm + ". You entered the value " + sideB);
+		}
+		
+		if (sideC >= minCm && sideC <= maxCm) {
+			this.sideC = sideC;
+		} else {
+			throw new ShapeException("Side B must be between " + minCm + " and " + maxCm + ". You entered the value " + sideC);
+		}
 		
 		boolean validTriangle = checkValidity();
-		System.out.println(validTriangle);
+		if (validTriangle) {
+			draw();
+		}
 	}
 	
 	public void draw() {

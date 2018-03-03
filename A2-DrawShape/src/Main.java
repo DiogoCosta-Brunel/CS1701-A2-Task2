@@ -32,8 +32,8 @@ public class Main {
 					case "T":
 						try {
 							int[] measurements = Triangle.GetMeasurements();
+							@SuppressWarnings("unused")
 							Triangle myTri = new Triangle(measurements[0], measurements[1], measurements[2]);
-							//myTri.draw();
 						} catch (ShapeException e) {
 							System.out.println(e);
 						}
@@ -72,14 +72,17 @@ public class Main {
 		return optionSelected;
 	}
 	
+	@SuppressWarnings("unused")
 	public static boolean CheckInput(String text) {
 		
 		boolean validInput = false;
 		
 		for (int i = 0; i < mainMenuOptions.length; i++) {
 			if (!mainMenuOptions[i][0].equals(text)) {
+				clearConsole();
 				System.out.println("Dear user, the option (" + text + ") "
 						+ "is not a valid option. Could you please try again?\n");
+				break;
 			}
 			
 			else {
@@ -88,6 +91,27 @@ public class Main {
 		}
 		return validInput;
 		
+	}
+	
+	public final static void clearConsole()
+	{
+	    try
+	    {
+	        final String os = System.getProperty("os.name");
+
+	        if (os.contains("Windows"))
+	        {
+	            Runtime.getRuntime().exec("cls");
+	        }
+	        else
+	        {
+	            Runtime.getRuntime().exec("clear");
+	        }
+	    }
+	    catch (final Exception e)
+	    {
+	        //  Handle any exceptions.
+	    }
 	}
 
 }
