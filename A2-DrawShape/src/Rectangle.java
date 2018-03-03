@@ -8,33 +8,28 @@ public class Rectangle extends Shape {
 	public void draw() {
 		timeToDraw = (multipler * height) * 1000;
 		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw + 1000);
-		Main.myFinch.setWheelVelocities(125, 0, 1000);
-		
-		// Draw backwards
-		Main.myFinch.setWheelVelocities(-drawSpeed, -drawSpeed, 3550);
+		turnRight();
 		
 		// Draw width
 		timeToDraw = (multipler * width) * 1000;
 		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw);
-		
-		// Turn
-		Main.myFinch.setWheelVelocities(125, 0, 1000);
-		
-		// Draw backwards
-		Main.myFinch.setWheelVelocities(-drawSpeed, -drawSpeed, 3550);
+		turnRight();
 		
 		// Draw height again
 		timeToDraw = (multipler * height) * 1000;
 		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw + 1000);
-		
-		// Turn
-		Main.myFinch.setWheelVelocities(125, 0, 1000);
-		
-		// Draw backwards
-		Main.myFinch.setWheelVelocities(-drawSpeed, -drawSpeed, 3550);
+		turnRight();
 		
 		// Draw width
 		timeToDraw = (multipler * width) * 1000;
 		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw);
+	}
+	
+	public void turnRight() {
+		Main.myFinch.setWheelVelocities(150, -75, 1000);
+	}
+	
+	public void turnLeft() {
+		Main.myFinch.setWheelVelocities(-75, 150, 1000);
 	}
 }
