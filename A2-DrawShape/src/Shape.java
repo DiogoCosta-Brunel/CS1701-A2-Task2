@@ -9,6 +9,7 @@ public class Shape {
 	int width;
 	int height;
 	double timeToDraw;
+	static final int drawSpeed = 40;
 	
 	static final double multipler = 0.42; // Used to determine how long to draw.
 	
