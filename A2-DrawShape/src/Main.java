@@ -79,16 +79,21 @@ public class Main {
 		
 		for (int i = 0; i < mainMenuOptions.length; i++) {
 			if (!mainMenuOptions[i][0].equals(text)) {
-				clearConsole();
-				System.out.println("Dear user, the option (" + text + ") "
-						+ "is not a valid option. Could you please try again?\n");
-				break;
+				validInput = false;
 			}
 			
 			else {
-				return true;
+				validInput = true;
+				return validInput;
 			}
 		}
+		
+		if (validInput == false) {
+			clearConsole();
+			System.out.println("Dear user, the option (" + text + ") "
+					+ "is not a valid option. Could you please try again?\n");
+		}
+		
 		return validInput;
 		
 	}
