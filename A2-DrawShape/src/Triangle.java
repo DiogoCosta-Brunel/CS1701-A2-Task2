@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 
 public class Triangle extends Shape {
 	
 	double angleA, angleB, angleC;
 	int sideA, sideB, sideC;
 	static final int minCm = 30, maxCm = 90;
+	static ArrayList<String> shapesDrawn = new ArrayList<String>();
 
 	public Triangle(int sideA, int sideB, int sideC) throws ShapeException {
 		super(sideA, sideB);
@@ -25,10 +27,7 @@ public class Triangle extends Shape {
 			throw new ShapeException("Side B must be between " + minCm + " and " + maxCm + ". You entered the value " + sideC);
 		}
 		
-		boolean validTriangle = checkValidity();
-		if (validTriangle) {
-			draw();
-		}
+		checkValidity();
 	}
 	
 	public void draw() {
@@ -58,7 +57,7 @@ public class Triangle extends Shape {
 		return measurements;
 	}
 	
-	boolean checkValidity() throws ShapeException {
+	void checkValidity() throws ShapeException {
 		angleC = Math.toDegrees(Math.acos((Math.pow(sideA, 2) + Math.pow(sideB, 2) - Math.pow(sideC, 2)) / (2 * sideA * sideB)));
 		angleA = Math.toDegrees(Math.acos((Math.pow(sideB, 2) + Math.pow(sideC, 2) - Math.pow(sideA, 2)) / (2 * sideB * sideC)));
 		angleB = Math.toDegrees(Math.acos((Math.pow(sideA, 2) + Math.pow(sideC, 2) - Math.pow(sideB, 2)) / (2 * sideA * sideC)));
@@ -69,9 +68,7 @@ public class Triangle extends Shape {
 		
 		System.out.println(angleA + angleB + angleC);
 		
-		if ((angleA + angleB + angleC) == 180) {
-			return true;
-		} else {
+		if ((angleA + angleB + angleC) != 180) {
 			throw new ShapeException("Not a valid triangle!");
 		}
 	}

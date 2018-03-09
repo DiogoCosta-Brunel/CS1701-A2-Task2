@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+
 public class Rectangle extends Shape {
+	
+	static ArrayList<String> shapesDrawn = new ArrayList<String>();
 
 	Rectangle(int widthCm, int heightCm) throws ShapeException {
 		super(widthCm, heightCm);

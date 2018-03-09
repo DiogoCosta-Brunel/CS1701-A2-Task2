@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Shape {
 	static final int minWidthCm = 30;
@@ -12,6 +13,7 @@ public class Shape {
 	static final int drawSpeed = 40;
 	
 	static final double multipler = 0.2; // Used to determine how long to draw.
+	static ArrayList<String> shapesDrawn = new ArrayList<String>();
 	
 	Shape(int widthCm, int heightCm) throws ShapeException {
 		if (widthCm >= minWidthCm && widthCm <= maxWidthCm) {

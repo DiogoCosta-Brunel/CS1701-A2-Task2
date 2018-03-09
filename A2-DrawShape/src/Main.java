@@ -13,8 +13,9 @@ public class Main {
 
 	public static void main(String[] args) throws ShapeException {
 		// TODO Auto-generated method stub
-		while (true) {
-			String optionSelected = DisplayOptions();
+		String optionSelected = null;
+		while (optionSelected != "Q") {
+			optionSelected = DisplayOptions();
 			boolean inputValid = CheckInput(optionSelected);
 			
 			if (inputValid)  { // IF its True
@@ -24,6 +25,7 @@ public class Main {
 							int[] measurements = Shape.GetMeasurements();
 							Rectangle myRect = new Rectangle(measurements[0], measurements[1]);
 							myRect.draw();
+							Rectangle.shapesDrawn.add(String.valueOf(measurements[0]) + ";" + String.valueOf(measurements[1]));
 						} catch (ShapeException e) {
 							System.out.println(e);
 						}
@@ -32,19 +34,45 @@ public class Main {
 					case "T":
 						try {
 							int[] measurements = Triangle.GetMeasurements();
-							@SuppressWarnings("unused")
 							Triangle myTri = new Triangle(measurements[0], measurements[1], measurements[2]);
+							myTri.draw();
+							Triangle.shapesDrawn.add(String.valueOf(measurements[0]) + ";" + String.valueOf(measurements[1]) + ";" + String.valueOf(measurements[2]));
 						} catch (ShapeException e) {
 							System.out.println(e);
 						}
 						break;
 						
 					case "Q":
-						scan.close();
-						break;
+						parseShapesDrawn();
+						System.exit(0);
 				}
 			}
 		}
+	}
+	
+	static void parseShapesDrawn() {
+		clearConsole();
+		System.out.println("Rectangle\n");
+		for (String shapeString : Rectangle.shapesDrawn) {
+			int width = Integer.parseInt(shapeString.substring(0, shapeString.indexOf(";")));
+			int height = Integer.parseInt(shapeString.substring(shapeString.lastIndexOf(";") + 1));
+			System.out.println("Width: " + String.valueOf(width) + "	" + "Height: " + String.valueOf(height));
+		}
+		System.out.println();
+		System.out.println("Rectangle was drawn " + String.valueOf(Rectangle.shapesDrawn.size()) + " time(s)");
+		System.out.println();
+		
+		System.out.println("Triangle\n");
+		for (String shapeString : Triangle.shapesDrawn) {
+			int sideA = Integer.parseInt(shapeString.substring(0, shapeString.indexOf(";")));
+			int sideB = Integer.parseInt(shapeString.substring(shapeString.indexOf(";") + 1, shapeString.lastIndexOf(";")));
+			int sideC = Integer.parseInt(shapeString.substring(shapeString.lastIndexOf(";") + 1));
+			
+			System.out.println("Side A: " + String.valueOf(sideA) + "	" + "Side B: " + String.valueOf(sideB) + "	" + "Side C: " + String.valueOf(sideC));
+		}
+		System.out.println();
+		System.out.println("Triangle was drawn " + String.valueOf(Triangle.shapesDrawn.size()) + " time(s)");
+		System.out.println();
 	}
 	
 	public static String DisplayOptions() {
