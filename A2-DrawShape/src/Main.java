@@ -56,6 +56,9 @@ public class Main {
 	
 	static void parseShapesDrawn() {
 		clearConsole();
+		
+		int rectangleDrawnCount = Rectangle.shapesDrawn.size();
+		int triangleDrawnCount = Triangle.shapesDrawn.size();
 		System.out.println("Rectangle\n");
 		for (String shapeString : Rectangle.shapesDrawn) {
 			int width = Integer.parseInt(shapeString.substring(0, shapeString.indexOf(";")));
@@ -77,6 +80,18 @@ public class Main {
 		System.out.println();
 		System.out.println("Triangle was drawn " + String.valueOf(Triangle.shapesDrawn.size()) + " time(s)");
 		System.out.println();
+		
+		calculateMostFrequent(rectangleDrawnCount, triangleDrawnCount);
+	}
+	
+	static void calculateMostFrequent(int rectCount, int triCount) {
+		if (rectCount > triCount) {
+			System.out.println("Rectangle was drawn more frequently.");
+		} else if (triCount > rectCount) {
+			System.out.println("Triangle was drawn more frequently.");
+		} else {
+			System.out.println("Rectangle and Triangle have the same frequency drawn.");
+		}
 	}
 	
 	public static String DisplayOptions() {

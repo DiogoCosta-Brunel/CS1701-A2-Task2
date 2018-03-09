@@ -15,18 +15,8 @@ public class Shape {
 	static final double multipler = 0.2; // Used to determine how long to draw.
 	static ArrayList<String> shapesDrawn = new ArrayList<String>();
 	
-	Shape(int widthCm, int heightCm) throws ShapeException {
-		if (widthCm >= minWidthCm && widthCm <= maxWidthCm) {
-			this.width = widthCm;
-		} else {
-			throw new ShapeException("The width must be between " + minWidthCm + " and " + maxWidthCm + ". You entered the value " + widthCm);
-		}
-		
-		if (heightCm >= minHeightCm && heightCm <= maxHeightCm) {
-			this.height = heightCm;
-		} else {
-			throw new ShapeException("The height must be between " + minHeightCm + " and " + maxHeightCm + ". You entered the value " + heightCm);
-		}
+	Shape() throws ShapeException {
+
 	}
 	
 	public static int[] GetMeasurements() {

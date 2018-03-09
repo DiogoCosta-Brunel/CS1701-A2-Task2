@@ -8,8 +8,7 @@ public class Triangle extends Shape {
 	static ArrayList<String> shapesDrawn = new ArrayList<String>();
 
 	public Triangle(int sideA, int sideB, int sideC) throws ShapeException {
-		super(sideA, sideB);
-		
+		//super(sideA, sideB);
 		if (sideA >= minCm && sideA <= maxCm) {
 			this.sideA = sideA;
 		} else {
@@ -66,8 +65,6 @@ public class Triangle extends Shape {
 		angleC = (int) Math.round(angleC);
 		angleA = (int) Math.round(angleA);
 		angleB = (int) Math.round(angleB);
-		
-		System.out.println(angleA + angleB + angleC);
 		
 		if ((angleC + angleA + angleB) != 180) {
 			throw new ShapeException("Not a valid triangle! Angles only go up to " + String.valueOf(angleA + angleB + angleC) + " according to the cosine rule.");
