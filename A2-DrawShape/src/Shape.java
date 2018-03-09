@@ -19,13 +19,13 @@ public class Shape {
 		if (widthCm >= minWidthCm && widthCm <= maxWidthCm) {
 			this.width = widthCm;
 		} else {
-			throw new ShapeException("The width must be between " + minWidthCm + " and " + maxWidthCm + ". You entered the value " + width);
+			throw new ShapeException("The width must be between " + minWidthCm + " and " + maxWidthCm + ". You entered the value " + widthCm);
 		}
 		
 		if (heightCm >= minHeightCm && heightCm <= maxHeightCm) {
 			this.height = heightCm;
 		} else {
-			throw new ShapeException("The height must be between " + minHeightCm + " and " + maxHeightCm + ". You entered the value " + height);
+			throw new ShapeException("The height must be between " + minHeightCm + " and " + maxHeightCm + ". You entered the value " + heightCm);
 		}
 	}
 	

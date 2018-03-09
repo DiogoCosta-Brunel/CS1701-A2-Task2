@@ -9,6 +9,7 @@ public class Triangle extends Shape {
 
 	public Triangle(int sideA, int sideB, int sideC) throws ShapeException {
 		super(sideA, sideB);
+		
 		if (sideA >= minCm && sideA <= maxCm) {
 			this.sideA = sideA;
 		} else {
@@ -60,16 +61,16 @@ public class Triangle extends Shape {
 	void checkValidity() throws ShapeException {
 		angleC = Math.toDegrees(Math.acos((Math.pow(sideA, 2) + Math.pow(sideB, 2) - Math.pow(sideC, 2)) / (2 * sideA * sideB)));
 		angleA = Math.toDegrees(Math.acos((Math.pow(sideB, 2) + Math.pow(sideC, 2) - Math.pow(sideA, 2)) / (2 * sideB * sideC)));
-		angleB = Math.toDegrees(Math.acos((Math.pow(sideA, 2) + Math.pow(sideC, 2) - Math.pow(sideB, 2)) / (2 * sideA * sideC)));
+		angleB = Math.toDegrees(Math.acos((Math.pow(sideA, 2) + Math.pow(sideC, 2) - Math.pow(sideB, 2)) / (2 * sideA * sideC)));		
 		
-		angleC = (int) angleC;
-		angleA = (int) angleA;
-		angleB = (int) angleB;
+		angleC = (int) Math.round(angleC);
+		angleA = (int) Math.round(angleA);
+		angleB = (int) Math.round(angleB);
 		
 		System.out.println(angleA + angleB + angleC);
 		
-		if ((angleA + angleB + angleC) != 180) {
-			throw new ShapeException("Not a valid triangle!");
+		if ((angleC + angleA + angleB) != 180) {
+			throw new ShapeException("Not a valid triangle! Angles only go up to " + String.valueOf(angleA + angleB + angleC) + " according to the cosine rule.");
 		}
 	}
 
