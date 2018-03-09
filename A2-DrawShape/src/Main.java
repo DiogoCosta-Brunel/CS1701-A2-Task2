@@ -72,7 +72,6 @@ public class Main {
 		return optionSelected;
 	}
 	
-	@SuppressWarnings("unused")
 	public static boolean CheckInput(String text) {
 		
 		boolean validInput = false;

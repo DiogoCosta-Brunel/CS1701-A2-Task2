@@ -1,11 +1,12 @@
 
-public class Triangle {
+public class Triangle extends Shape {
 	
 	double angleA, angleB, angleC;
 	int sideA, sideB, sideC;
 	static final int minCm = 30, maxCm = 90;
 
 	public Triangle(int sideA, int sideB, int sideC) throws ShapeException {
+		super(sideA, sideB);
 		if (sideA >= minCm && sideA <= maxCm) {
 			this.sideA = sideA;
 		} else {
@@ -31,7 +32,12 @@ public class Triangle {
 	}
 	
 	public void draw() {
-		
+		timeToDraw = (multipler * height) * 1000;
+		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw + 1000);
+		Main.myFinch.setWheelVelocities(255, 0, 1000);
+		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw + 1000);
+		Main.myFinch.setWheelVelocities(150, -75, 1000);
+		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw + 1000);
 	}
 	
 	// Overriding the Shape method
@@ -52,18 +58,21 @@ public class Triangle {
 		return measurements;
 	}
 	
-	boolean checkValidity() {
+	boolean checkValidity() throws ShapeException {
 		angleC = Math.toDegrees(Math.acos((Math.pow(sideA, 2) + Math.pow(sideB, 2) - Math.pow(sideC, 2)) / (2 * sideA * sideB)));
 		angleA = Math.toDegrees(Math.acos((Math.pow(sideB, 2) + Math.pow(sideC, 2) - Math.pow(sideA, 2)) / (2 * sideB * sideC)));
 		angleB = Math.toDegrees(Math.acos((Math.pow(sideA, 2) + Math.pow(sideC, 2) - Math.pow(sideB, 2)) / (2 * sideA * sideC)));
 		
-		System.out.println(angleC + " " + angleA + " " + angleB);
-		System.out.println(angleC + angleA + angleB);
+		angleC = (int) angleC;
+		angleA = (int) angleA;
+		angleB = (int) angleB;
+		
+		System.out.println(angleA + angleB + angleC);
 		
 		if ((angleA + angleB + angleC) == 180) {
 			return true;
 		} else {
-			return false;
+			throw new ShapeException("Not a valid triangle!");
 		}
 	}
 
