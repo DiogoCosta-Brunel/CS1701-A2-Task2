@@ -31,11 +31,13 @@ public class Triangle extends Shape {
 	}
 	
 	public void draw() {
-		timeToDraw = (multipler * height) * 1000;
+		timeToDraw = (multipler * sideA) * 1000;
 		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw + 1000);
 		Main.myFinch.setWheelVelocities(255, 0, 1000);
+		timeToDraw = (multipler * sideB) * 1000;
 		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw + 1000);
 		Main.myFinch.setWheelVelocities(150, -75, 1000);
+		timeToDraw = (multipler * sideC) * 1000;
 		Main.myFinch.setWheelVelocities(drawSpeed, drawSpeed, (int)timeToDraw + 1000);
 	}
 	
